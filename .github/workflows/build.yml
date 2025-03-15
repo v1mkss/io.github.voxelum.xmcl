@@ -54,9 +54,9 @@ jobs:
               setpath($p + ["sources", 0, "url"]; $url) |
               setpath($p + ["sources", 0, "sha256"]; $sha) |
               setpath($p + ["sources", 0, "dest-filename"]; "xmcl.deb"))' \
-              io.github.voxelum.xmcl.yaml > updated.yaml
+              io.github.voxelum.xmcl.json > updated.json
 
-          jq '.["build-options"] = {"arch": ["x86_64"]}' updated.yaml > io.github.voxelum.xmcl.yaml
+          jq '.["build-options"] = {"arch": ["x86_64"]}' updated.json > io.github.voxelum.xmcl.json
 
       - name: Install SDK extensions
         run: |
@@ -70,7 +70,7 @@ jobs:
       - name: Build Flatpak
         run: |
           mkdir -p xmcl
-          flatpak-builder --user --force-clean --arch=x86_64 build-dir io.github.voxelum.xmcl.yaml --repo=xmcl
+          flatpak-builder --user --force-clean --arch=x86_64 build-dir io.github.voxelum.xmcl.json --repo=xmcl
           flatpak build-bundle xmcl xmcl-${{ env.VERSION }}-x86_64.flatpak io.github.voxelum.xmcl
 
       - name: Upload Flatpak bundle
