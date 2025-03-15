@@ -33,6 +33,37 @@
       "build-commands": ["mkdir -p /app/lib/GL"]
     },
     {
+      "name": "openjdk",
+      "buildsystem": "simple",
+      "build-commands": ["mkdir -p /app/jvm", "cp -r * /app/jvm/"],
+      "sources": [
+        {
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "flathub:org.openjdk.Java//21",
+          "dest-filename": "java21"
+        },
+        {
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "flathub:org.openjdk.Java//17",
+          "dest-filename": "java17"
+        },
+        {
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "flathub:org.openjdk.Java//11",
+          "dest-filename": "java11"
+        },
+        {
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "flathub:org.openjdk.Java//8",
+          "dest-filename": "java8"
+        }
+      ]
+    },
+    {
       "name": "xmcl",
       "buildsystem": "simple",
       "build-commands": [
