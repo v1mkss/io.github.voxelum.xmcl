@@ -6,6 +6,7 @@
   "command": "xmcl-wrapper.sh",
   "x-flathub-user-install": true,
   "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.openjdk",
     "org.freedesktop.Sdk.Extension.openjdk17",
     "org.freedesktop.Sdk.Extension.openjdk11",
     "org.freedesktop.Sdk.Extension.openjdk8"
