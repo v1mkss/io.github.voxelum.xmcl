@@ -61,10 +61,6 @@ jobs:
       - name: Install SDK extensions
         run: |
           flatpak install --user -y flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
-          flatpak install --user -y flathub org.freedesktop.Sdk.Extension.openjdk//23.08
-          flatpak install --user -y flathub org.freedesktop.Sdk.Extension.openjdk17//23.08
-          flatpak install --user -y flathub org.freedesktop.Sdk.Extension.openjdk11//23.08
-          flatpak install --user -y flathub org.freedesktop.Sdk.Extension.openjdk8//23.08
           flatpak install --user -y flathub org.freedesktop.Platform.ffmpeg-full//23.08
 
       - name: Build Flatpak

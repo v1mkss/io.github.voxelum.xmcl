@@ -5,12 +5,6 @@
   "sdk": "org.freedesktop.Sdk",
   "command": "xmcl-wrapper.sh",
   "x-flathub-user-install": true,
-  "sdk-extensions": [
-    "org.freedesktop.Sdk.Extension.openjdk",
-    "org.freedesktop.Sdk.Extension.openjdk17",
-    "org.freedesktop.Sdk.Extension.openjdk11",
-    "org.freedesktop.Sdk.Extension.openjdk8"
-  ],
   "finish-args": [
     "--share=ipc",
     "--share=network",
@@ -25,8 +19,10 @@
     "--own-name=org.discordapp.Discord.discordrpc",
     "--system-talk-name=org.freedesktop.DBus",
     "--talk-name=org.kde.StatusNotifierWatcher",
-    "--env=PATH=/app/jre/bin:/app/bin:/usr/bin",
-    "--env=JAVA_HOME=/app/jre"
+    "--env=PATH=/app/jre/bin:/app/bin:/usr/bin:/usr/java/latest/bin",
+    "--env=JAVA_HOME=/app/jre:/usr/java/latest",
+    "--filesystem=/usr/lib/jvm:ro",
+    "--filesystem=/usr/java:ro"
   ],
   "add-build-extensions": {
     "org.freedesktop.Platform.ffmpeg-full": {
