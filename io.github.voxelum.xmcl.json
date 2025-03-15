@@ -4,6 +4,12 @@
   "runtime-version": "23.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "xmcl-wrapper.sh",
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.openjdk21",
+    "org.freedesktop.Sdk.Extension.openjdk17",
+    "org.freedesktop.Sdk.Extension.openjdk11",
+    "org.freedesktop.Sdk.Extension.openjdk8"
+  ],
   "finish-args": [
     "--share=ipc",
     "--share=network",
@@ -17,7 +23,9 @@
     "--talk-name=com.discordapp.Discord",
     "--own-name=org.discordapp.Discord.discordrpc",
     "--system-talk-name=org.freedesktop.DBus",
-    "--talk-name=org.kde.StatusNotifierWatcher"
+    "--talk-name=org.kde.StatusNotifierWatcher",
+    "--env=PATH=/app/jre/bin:/app/bin:/usr/bin",
+    "--env=JAVA_HOME=/app/jre"
   ],
   "add-build-extensions": {
     "org.freedesktop.Platform.ffmpeg-full": {
@@ -31,37 +39,6 @@
       "name": "opengl-dirs",
       "buildsystem": "simple",
       "build-commands": ["mkdir -p /app/lib/GL"]
-    },
-    {
-      "name": "openjdk",
-      "buildsystem": "simple",
-      "build-commands": ["mkdir -p /app/jvm", "cp -r * /app/jvm/"],
-      "sources": [
-        {
-          "type": "file",
-          "only-arches": ["x86_64"],
-          "url": "flathub:org.openjdk.Java//21",
-          "dest-filename": "java21"
-        },
-        {
-          "type": "file",
-          "only-arches": ["x86_64"],
-          "url": "flathub:org.openjdk.Java//17",
-          "dest-filename": "java17"
-        },
-        {
-          "type": "file",
-          "only-arches": ["x86_64"],
-          "url": "flathub:org.openjdk.Java//11",
-          "dest-filename": "java11"
-        },
-        {
-          "type": "file",
-          "only-arches": ["x86_64"],
-          "url": "flathub:org.openjdk.Java//8",
-          "dest-filename": "java8"
-        }
-      ]
     },
     {
       "name": "xmcl",
